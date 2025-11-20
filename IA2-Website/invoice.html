@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Invoice - E-Gaming Boot Camp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+<div class="header-inner">
+<div class="logo">
+<img src="images/logo.jpg" alt="Logo">
+<span>E-Gaming Boot Camp</span>
+</div>
+<nav class="nav">
+<a href="index.html">Home</a>
+<a href="cart.html">Cart</a>
+<a href="checkout.html">Checkout</a>
+<a href="about.html">About</a>
+</nav>
+</div>
+</header>
+<div class="container">
+<aside class="sidebar">
+<h3>Invoice actions</h3>
+<ul>
+<li><a href="checkout.html">Back to checkout</a></li>
+<li><a href="index.html">Continue shopping</a></li>
+</ul>
+<div class="card">
+<p class="notice">This invoice is generated from your last checkout confirmation.</p>
+</div>
+</aside>
+<main class="main">
+<section class="card">
+<h2>Invoice</h2>
+<p id="invoice-meta" class="muted">Invoice #: INV-000000 | Date: YYYY-MM-DD</p>
+<table class="table">
+<thead>
+<tr>
+<th>Product</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Sub-total</th>
+</tr>
+</thead>
+<tbody id="invoice-body">
+<!-- JS will populate line items -->
+</tbody>
+</table>
+<table class="table">
+<tbody id="invoice-summary">
+<!-- JS will populate discount, tax, total -->
+</tbody>
+</table>
+<div class="card" id="invoice-details">
+<h3>Billing details</h3>
+<p>Name: —</p>
+<p>Address: —</p>
+<p>Email: —</p>
+<p>Amount paid: —</p>
+<p class="notice">These fields are filled from the checkout form.</p>
+</div>
+<div class="form-actions">
+<button class="btn" type="button" onclick="window.print()">Print</button>
+<button class="btn" type="button" onclick="window.location.href='index.html'">Close</button>
+</div>
+<p class="notice">Thank you for choosing E-Gaming Boot Camp.</p>
+</section>
+</main>
+</div>
+<footer class="footer">
+<p>&copy; 2025 E-Gaming Boot Camp</p>
+</footer>
+<script src="script.js"></script>
+<script>
+(function(){
+  var invoice=JSON.parse(localStorage.getItem("invoice"));
+  if(!invoice){
+    document.getElementById("invoice-meta").textContent="No confirmed order found. Please return to Checkout.";
+    return;
+  }
+  var meta=document.getElementById("invoice-meta");
+  var now=new Date();
+  var yyyy=now.getFullYear();
+  var mm=String(now.getMonth()+1).padStart(2,"0");
+  var dd=String(now.getDate()).padStart(2,"0");
+  var invNum=localStorage.getItem("invoiceNumber");
+  if(!invNum){
+    invNum="INV-"+String(Math.floor(Math.random()*1000000)).padStart(6,"0");
+    localStorage.setItem("invoiceNumber",invNum);
+  }
+  meta.textContent=invNum+" | Date: "+yyyy+"-"+mm+"-"+dd;
+  var tbody=document.getElementById("invoice-body");
+  tbody.innerHTML="";
+  invoice.cart.forEach(function(item){
+    var sub=(item.price*item.qty);
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+item.name+"</td><td>"+item.qty+"</td><td>$"+item.price.toFixed(2)+"</td><td>$"+sub.toFixed(2)+"</td>";
+    tbody.appendChild(tr);
+  });
+  var summary=document.getElementById("invoice-summary");
+  summary.innerHTML="";
+  var totals=invoice.totals;
+  var subtotal=totals.subtotal;
+  var discount=totals.discount;
+  var tax=totals.tax;
+  var total=totals.total;
+  var rows="";
+  rows+=`<tr><td>Items total</td><td class="right">$${subtotal.toFixed(2)}</td></tr>`;
+  rows+=`<tr><td>Discount</td><td class="right">-$${discount.toFixed(2)}</td></tr>`;
+  rows+=`<tr><td>Tax (15%)</td><td class="right">$${tax.toFixed(2)}</td></tr>`;
+  rows+=`<tr><td><strong>Total</strong></td><td class="right"><strong>$${total.toFixed(2)}</strong></td></tr>`;
+  summary.innerHTML=rows;
+  var detailsDiv=document.getElementById("invoice-details");
+  detailsDiv.innerHTML="<h3>Billing details</h3>"
+    +"<p>Name: "+(invoice.details["ship-name"]||"—")+"</p>"
+    +"<p>Address: "+(invoice.details["ship-address"]||"—")+"</p>"
+    +"<p>Email: "+(invoice.details["ship-email"]||"—")+"</p>"
+    +"<p>Amount paid: $"+(invoice.details["amount"]||"0")+"</p>"
+    +"<p class='notice'>Invoice generated from your checkout submission.</p>";
+})();
+</script>
+</body>
+</html>
