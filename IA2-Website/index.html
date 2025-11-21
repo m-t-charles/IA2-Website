@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>E-Gaming Boot Camp - Train Fast, Play Better</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+<div class="header-inner">
+<div class="logo">
+<img src="images/logo.jpg" alt="Logo">
+<span>E-Gaming Boot Camp</span>
+</div>
+<nav class="nav">
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="cart.html">Cart</a>
+<a href="checkout.html">Checkout</a>
+<a href="invoice.html">Invoice</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+</nav>
+</div>
+</header>
+<div class="container">
+<aside class="sidebar">
+<h3>Games Offered</h3>
+<ul>
+<li><a href="#valorant">Valorant</a></li>
+<li><a href="#lol">League of Legends</a></li>
+<li><a href="#fortnite">Fortnite</a></li>
+<li><a href="#apex">Apex Legends</a></li>
+<li><a href="#cod">Call of Duty</a></li>
+<li><a href="#dota">Dota 2</a></li>
+<li><a href="#overwatch">Overwatch 2</a></li>
+<li><a href="#cs2">Counter-Strike 2</a></li>
+<li><a href="#rocket">Rocket League</a></li>
+<li><a href="#pubg">PUBG</a></li>
+</ul>
+</aside>
+<main class="main">
+
+<section class="card">
+<h1>Train fast. Play better.</h1>
+<p>Flat hourly coaching rate: <span class="badge">$25 per hour</span></p>
+<p>Group play booking: <span class="badge">$15 per player/hour</span></p>
+</section>
+
+<!-- Product bubbles grid -->
+<section class="grid">
+
+<div class="card" id="valorant">
+<h2>Valorant Coaching</h2>
+<img src="images/val.png" alt="Valorant coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Sharpen aim, learn agent lineups, and master team comms.</p>
+<button class="cta" onclick="addToCart('Valorant Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('Valorant Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="lol">
+<h2>League of Legends Coaching</h2>
+<img src="images/lol.png" alt="LoL coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Improve laning, macro decisions, and champion mechanics.</p>
+<button class="cta" onclick="addToCart('LoL Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('LoL Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="fortnite">
+<h2>Fortnite Coaching</h2>
+<img src="images/fortnite.jpeg" alt="Fortnite coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Build faster, edit smarter, and dominate battle royale lobbies.</p>
+<button class="cta" onclick="addToCart('Fortnite Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('Fortnite Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="apex">
+<h2>Apex Legends Coaching</h2>
+<img src="images/apex.png" alt="Apex coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Learn rotations, legend abilities, and squad synergy.</p>
+<button class="cta" onclick="addToCart('Apex Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('Apex Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="cod">
+<h2>Call of Duty Coaching</h2>
+<img src="images/cod.jpeg" alt="COD coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Boost accuracy, map awareness, and tactical play.</p>
+<button class="cta" onclick="addToCart('COD Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('COD Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="dota">
+<h2>Dota 2 Coaching</h2>
+<img src="images/dota2.jpeg" alt="Dota coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Master hero pools, itemization, and teamfight execution.</p>
+<button class="cta" onclick="addToCart('Dota Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('Dota Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="overwatch">
+<h2>Overwatch 2 Coaching</h2>
+<img src="images/over2.png" alt="Overwatch coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Improve hero mechanics, positioning, and ultimate usage.</p>
+<button class="cta" onclick="addToCart('Overwatch Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('Overwatch Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="cs2">
+<h2>Counter-Strike 2 Coaching</h2>
+<img src="images/cs2.png" alt="CS2 coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Learn spray control, utility usage, and team strategies.</p>
+<button class="cta" onclick="addToCart('CS2 Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('CS2 Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="rocket">
+<h2>Rocket League Coaching</h2>
+<img src="images/rocket.jpeg" alt="Rocket League coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Boost aerials, rotations, and mechanical consistency.</p>
+<button class="cta" onclick="addToCart('Rocket League Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('Rocket League Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+<div class="card" id="pubg">
+<h2>PUBG Coaching</h2>
+<img src="images/pubg.jpeg" alt="PUBG coaching" style="width:100%;height:150px;object-fit:cover;border:1px solid #39ff14">
+<p>Master looting, positioning, and survival strategies.</p>
+<button class="cta" onclick="addToCart('PUBG Coaching Hour',25,1)">Add to Cart ($25)</button>
+<button class="btn" onclick="addToCart('PUBG Group Play',15,1)">Group Play ($15)</button>
+</div>
+
+</section>
+</main>
+</div>
+<footer class="footer">
+<p>&copy; 2025 E-Gaming Boot Camp</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
